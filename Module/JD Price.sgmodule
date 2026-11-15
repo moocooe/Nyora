@@ -1,0 +1,16 @@
+#!name=JD Price
+#!author=Acher
+#!desc=京东历史价格
+#!arguments=MMMCK_SCRIPT:慢慢买CK
+#!arguments-desc=请打开【慢慢买】APP，点击【我的】，提示【获取ck成功🎉】即可正常比价
+#!category=Mystic
+
+[Script]
+
+{{{MMMCK_SCRIPT}}} = type=http-request, pattern=^https?:\/\/apapia-sqk-weblogic\.manmanbuy\.com\/baoliao\/center\/menu$, script-path=https://raw.githubusercontent.com/Vaerios/Nyora/refs/heads/Surge/Script/JDPrice/JDPrice.js, requires-body=true, max-size=-1, timeout=60
+
+jd.price = type=http-response, pattern=^https?:\/\/in\.m\.jd\.com\/product\/graphext\/\d+\.html, script-path=https://raw.githubusercontent.com/Vaerios/Nyora/refs/heads/Surge/Script/JDPrice/JDPrice.js, requires-body=true, max-size=-1, timeout=60
+
+[MITM]
+
+hostname = %APPEND% in.m.jd.com, apapia-sqk-weblogic.manmanbuy.com
